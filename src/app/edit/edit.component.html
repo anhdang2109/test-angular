@@ -1,0 +1,22 @@
+
+<div class="container-xl" align="center">
+  <h2>Edit</h2>
+  <form [formGroup]="form" (ngSubmit)="onUpdate()">
+    <a [routerLink]="['/']" class="btn btn-outline-info mb-3">Back</a>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td><input type="text" formControlName="name" id="name"></td>
+      </tr>
+      <tr>
+        <td>Price</td>
+        <td><input type="text" formControlName="price" id="price"></td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td><input type="text" formControlName="description" id="description"></td>
+      </tr>
+    </table>
+    <button type="submit" class="btn btn-outline-danger">Update</button>
+  </form>
+</div>
