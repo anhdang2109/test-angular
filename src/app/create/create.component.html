@@ -1,22 +1,22 @@
 <div class="container-xl" align="center">
   <h2>Create Product</h2>
   <form [formGroup]="newProductForm" (ngSubmit)="create()">
-    <a [routerLink]="['/']" class="btn btn-outline-info mb-3">Back</a>
+    <a [routerLink]="['/']" class="btn btn-outline-info mb-3">Quay lại</a>
     <table>
       <tr>
-        <td>Name</td>
-        <td><input type="text" formControlName="name" id="name"></td>
+        <td>Tên sách: </td>
+        <td><input type="text" formControlName="title" id="title"></td>
       </tr>
       <tr>
-        <td>Price</td>
-        <td><input type="text" formControlName="price" id="price"></td>
+        <td>Tác giả</td>
+        <td><input type="text" formControlName="author" id="author"></td>
       </tr>
       <tr>
-        <td>Description</td>
-        <td><input type="text" formControlName="description" id="description"></td>
+        <td>Mô tả</td>
+        <td><textarea type="text" formControlName="description" id="description" cols="30" rows="10"></textarea></td>
       </tr>
     </table>
-    <button type="submit" class="btn btn-outline-danger">Add</button>
+    <button type="submit" class="btn btn-outline-danger">Thêm mới</button>
   </form>
 </div>
 

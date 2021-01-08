@@ -1,6 +1,6 @@
 import {Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {ProductService} from '../product.service';
-import {IProduct} from '../iproduct';
+import {Ibook} from '../ibook';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
@@ -9,9 +9,9 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
   encapsulation: ViewEncapsulation.None
 })
 export class ListComponent implements OnInit {
-  // products: Array<IProduct> = new Array<IProduct>();
+  // products: Array<Ibook> = new Array<Ibook>();
   // @ts-ignore
-  products: IProduct[];
+  products: Ibook[];
   // @ts-ignore
   public modalRef: BsModalRef;
 
@@ -26,7 +26,9 @@ export class ListComponent implements OnInit {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.productService.getAll().toPromise().then(value => {
-      this.products = value.data;
+      this.products = value;
+      console.log(value);
+      console.log(this.products);
     });
   }
 

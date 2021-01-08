@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IProduct} from '../iproduct';
+import {Ibook} from '../ibook';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../product.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,7 +14,7 @@ export class EditComponent implements OnInit {
   private id: number;
 
   // @ts-ignore
-  private product: IProduct;
+  private product: Ibook;
 
   // @ts-ignore
   form: FormGroup;
@@ -29,8 +29,8 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      price: ['', [Validators.required]],
+      title: ['', [Validators.required]],
+      author: ['', [Validators.required]],
       description: ['', [Validators.required]],
     });
 
@@ -39,11 +39,11 @@ export class EditComponent implements OnInit {
 
       this.productService.findById(this.id).toPromise().then(value => {
         console.log(value);
-        this.product = value.data;
+        this.product = value;
 
         this.form.patchValue({
-          name: this.product.name,
-          price: this.product.price,
+          title: this.product.title,
+          author: this.product.author,
           description: this.product.description,
         });
       });
@@ -55,13 +55,12 @@ export class EditComponent implements OnInit {
     if (!this.form.invalid) {
       this.product.name = this.form.value.name;
       this.product.price = this.form.value.price;
-      this.product.description = this.form.value.description;
+      this.product.thumbnail = this.form.value.description;
       console.log(this.product);
 
-      this.productService.save(this.product).toPromise().then(value => {
+      this.productService.update(this.product, this.id ).toPromise().then(value => {
         console.log('Update', value);
       });
-
       this.router.navigate(['/']);
     }
   }

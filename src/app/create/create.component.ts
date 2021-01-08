@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IProduct} from '../iproduct';
+import {Ibook} from '../ibook';
 import {ProductService} from '../product.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
@@ -22,15 +22,15 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.newProductForm = this.fb.group({
-      name: [''],
-      price: [''],
+      title: [''],
+      author: [''],
       description: ['']
     });
   }
 
   // tslint:disable-next-line:typedef
   create() {
-    let newP: IProduct = this.newProductForm.value;
+    const newP: Ibook = this.newProductForm.value;
     this.productService.save(newP).subscribe(() => {
       alert('successfully');
       this.router.navigate(['/create']);

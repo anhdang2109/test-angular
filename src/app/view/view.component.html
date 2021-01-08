@@ -1,0 +1,17 @@
+
+<div class="container-xl" align="center">
+  <h2>Thông tin sách</h2>
+    <a [routerLink]="['/']" class="btn btn-outline-info mb-3">Quay lại</a>
+    <table>
+      <tr>
+        <td>Tên sách: <span>{{product.title}}</span></td>
+      </tr>
+      <tr>
+        <td>Tác giả: <span>{{product.author}}</span></td>
+      </tr>
+      <tr>
+        <td>Mô tả: </td>
+      </tr>
+      <tr>{{product.description}}</tr>
+    </table>
+</div>
